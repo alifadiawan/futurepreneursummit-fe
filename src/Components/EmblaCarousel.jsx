@@ -1,30 +1,28 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import backgroundImage3 from '../assets/ip.png';
-import backgroundImage4 from '../assets/bg-purple.png';
+import backgroundImage3 from '../assets/ip.png'
 
 const initialItems = [
   { id: 1, title: 'Forest Wanderer', category: 'Illustration', img: backgroundImage3, description: 'A beautiful illustration...' },
-  { id: 2, title: 'City at Dusk', category: 'Photography', img: backgroundImage4, description: 'Stunning photograph...' },
+  { id: 2, title: 'City at Dusk', category: 'Photography', img: backgroundImage3, description: 'Stunning photograph...' },
   { id: 3, title: 'Abstract Dreams', category: 'Digital Art', img: backgroundImage3, description: 'A colorful and dynamic piece.' },
-  // { id: 4, title: 'Mountain Majesty', category: 'Nature', img: backgroundImage3, description: 'The awe-inspiring view...' },
-  // { id: 5, title: 'Ocean\'s Breath', category: 'Landscape', img: backgroundImage3, description: 'The calming and powerful waves...' },
 ];
 
 // Individual Story Item Component
-const StoryItem = ({ item, isActive, onImageLoad }) => {
+const StoryItem = ({ item, isActive, onImageLoad, shouldTrackLoading }) => {
   const imgRef = useRef(null);
 
   // FIX: Handles image loading for cached images, a common issue on iOS/Safari.
   useEffect(() => {
     const img = imgRef.current;
-    if (!img || !onImageLoad) return;
+    if (!img || !onImageLoad || !shouldTrackLoading) return;
 
     const handleLoad = () => {
-      onImageLoad();
+      onImageLoad(item.id);
     };
 
-    if (img.complete) {
+    if (img.complete && img.naturalWidth > 0) {
+      // Image is already loaded
       handleLoad();
     } else {
       img.addEventListener('load', handleLoad);
@@ -33,7 +31,7 @@ const StoryItem = ({ item, isActive, onImageLoad }) => {
     return () => {
       img.removeEventListener('load', handleLoad);
     };
-  }, [item.img, onImageLoad]);
+  }, [item.img, item.id, onImageLoad, shouldTrackLoading]);
   
   return (
     <div
@@ -63,22 +61,21 @@ const StoryItem = ({ item, isActive, onImageLoad }) => {
   );
 };
 
-
 // Main App Component
 export default function App() {
   const [items] = useState(initialItems);
   const [currentIndex, setCurrentIndex] = useState(items.length);
-  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [loadedImageIds, setLoadedImageIds] = useState(new Set());
   const carouselRef = useRef(null);
   const timeoutRef = useRef(null);
   const isTransitioning = useRef(false);
 
   const infiniteItems = [...items, ...items, ...items];
   const totalImages = items.length;
-  const allImagesLoaded = imagesLoaded >= totalImages;
+  const allImagesLoaded = loadedImageIds.size >= totalImages;
 
-  const handleImageLoad = useCallback(() => {
-    setImagesLoaded(prev => prev + 1);
+  const handleImageLoad = useCallback((imageId) => {
+    setLoadedImageIds(prev => new Set([...prev, imageId]));
   }, []);
 
   const scrollToIndexInstant = useCallback((index) => {
@@ -173,6 +170,18 @@ export default function App() {
     }
   }, [allImagesLoaded, items.length, scrollToIndexInstant]);
 
+  // Add a timeout fallback to hide loading screen after 5 seconds
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (!allImagesLoaded) {
+        console.warn('Images taking too long to load, hiding loading screen');
+        setLoadedImageIds(new Set(items.map(item => item.id)));
+      }
+    }, 5000);
+
+    return () => clearTimeout(timeout);
+  }, [allImagesLoaded, items]);
+
   const getDisplayIndex = (index) => {
     return index % items.length;
   };
@@ -204,6 +213,9 @@ export default function App() {
             </svg>
             <div className="text-white text-xl font-medium animate-pulse tracking-wide">
               Loading Stories...
+            </div>
+            <div className="text-white/70 text-sm">
+              {loadedImageIds.size} of {totalImages} images loaded
             </div>
           </div>
         </div>
@@ -239,7 +251,8 @@ export default function App() {
                 key={`${item.id}-${Math.floor(index / items.length)}`}
                 item={item}
                 isActive={currentIndex % items.length === index % items.length}
-                onImageLoad={index < items.length ? handleImageLoad : undefined}
+                onImageLoad={handleImageLoad}
+                shouldTrackLoading={index < items.length}
               />
             ))}
           </div>
