@@ -1,16 +1,67 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import backgroundImage3 from '../assets/ip.png'
+import bg from '../assets/ip.png';
+import bg2 from '../assets/bg-purple.png'
+import bghp from '../assets/FYX2026.png';
 
 const initialItems = [
-  { id: 1, title: 'Forest Wanderer', category: 'Illustration', img: backgroundImage3, description: 'A beautiful illustration...' },
-  { id: 2, title: 'City at Dusk', category: 'Photography', img: backgroundImage3, description: 'Stunning photograph...' },
-  { id: 3, title: 'Abstract Dreams', category: 'Digital Art', img: backgroundImage3, description: 'A colorful and dynamic piece.' },
+  { 
+    id: 1, 
+    title: 'Forest Wanderer', 
+    category: 'Illustration', 
+    img: {
+      desktop: bg, // 16:9 for desktop
+      mobile: bghp    // 3:4 for mobile
+    },
+    description: 'A beautiful illustration...' 
+  },
+  { 
+    id: 2, 
+    title: 'City at Dusk', 
+    category: 'Photography', 
+    img: {
+      desktop: bg, // 16:9 for desktop
+      mobile: bghp    // 3:4 for mobile
+    },
+    description: 'Stunning photograph...' 
+  },
+  { 
+    id: 3, 
+    title: 'Abstract Dreams', 
+    category: 'Digital Art', 
+    img: {
+      desktop: bg, // 16:9 for desktop
+      mobile: bghp    // 3:4 for mobile
+    },
+    description: 'A colorful and dynamic piece.' 
+  },
 ];
 
 // Individual Story Item Component
 const StoryItem = ({ item, isActive, onImageLoad, shouldTrackLoading }) => {
   const imgRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Get the appropriate image source based on device
+  const getImageSrc = () => {
+    if (typeof item.img === 'string') {
+      return item.img; // Fallback for old format
+    }
+    return isMobile ? item.img.mobile : item.img.desktop;
+  };
+
+  const currentImgSrc = getImageSrc();
 
   // FIX: Handles image loading for cached images, a common issue on iOS/Safari.
   useEffect(() => {
@@ -31,7 +82,7 @@ const StoryItem = ({ item, isActive, onImageLoad, shouldTrackLoading }) => {
     return () => {
       img.removeEventListener('load', handleLoad);
     };
-  }, [item.img, item.id, onImageLoad, shouldTrackLoading]);
+  }, [currentImgSrc, item.id, onImageLoad, shouldTrackLoading]);
   
   return (
     <div
@@ -48,11 +99,16 @@ const StoryItem = ({ item, isActive, onImageLoad, shouldTrackLoading }) => {
         <a href="https://www.google.com/" target='_blank' rel="noopener noreferrer">
           <img
             ref={imgRef}
-            src={item.img}
+            src={currentImgSrc}
             alt={item.title}
             className="w-full h-full object-cover transition-opacity duration-300"
             loading="lazy"
-            onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/600x800/cccccc/ffffff?text=Image+Not+Found'; }}
+            onError={(e) => { 
+              e.target.onerror = null; 
+              e.target.src = isMobile 
+                ? 'https://placehold.co/600x800/cccccc/ffffff?text=Image+Not+Found' 
+                : 'https://placehold.co/1600x900/cccccc/ffffff?text=Image+Not+Found';
+            }}
           />
           <div className="absolute inset-0 "></div>
         </a>
