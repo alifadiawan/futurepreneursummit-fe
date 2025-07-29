@@ -116,40 +116,40 @@ export default function App() {
     setCurrentIndex(detectedIndex);
   }, [items.length, scrollToIndexInstant]);
 
-  useEffect(() => {
-    const startAutoScroll = () => {
-      autoScrollRef.current = setInterval(() => {
-        handleNext();
-      }, 4000); // (3000ms = 3 seconds)
-    };
+  // useEffect(() => {
+  //   const startAutoScroll = () => {
+  //     autoScrollRef.current = setInterval(() => {
+  //       handleNext();
+  //     }, 4000); // (3000ms = 3 seconds)
+  //   };
 
-    const stopAutoScroll = () => {
-      if (autoScrollRef.current) {
-        clearInterval(autoScrollRef.current);
-      }
-    };
+  //   const stopAutoScroll = () => {
+  //     if (autoScrollRef.current) {
+  //       clearInterval(autoScrollRef.current);
+  //     }
+  //   };
 
-    // Only start scrolling when all images are loaded
-    if (allImagesLoaded) {
-      startAutoScroll();
-    }
+  //   // Only start scrolling when all images are loaded
+  //   if (allImagesLoaded) {
+  //     startAutoScroll();
+  //   }
 
-    // Add event listeners for pausing on hover
-    const carouselElement = carouselRef.current;
-    if (carouselElement) {
-      carouselElement.addEventListener('mouseenter', stopAutoScroll);
-      carouselElement.addEventListener('mouseleave', startAutoScroll);
-    }
+  //   // Add event listeners for pausing on hover
+  //   const carouselElement = carouselRef.current;
+  //   if (carouselElement) {
+  //     carouselElement.addEventListener('mouseenter', stopAutoScroll);
+  //     carouselElement.addEventListener('mouseleave', startAutoScroll);
+  //   }
 
-    // Cleanup function to clear interval and remove listeners on unmount
-    return () => {
-      stopAutoScroll();
-      if (carouselElement) {
-        carouselElement.removeEventListener('mouseenter', stopAutoScroll);
-        carouselElement.removeEventListener('mouseleave', startAutoScroll);
-      }
-    };
-  }, [allImagesLoaded, handleNext]);
+  //   // Cleanup function to clear interval and remove listeners on unmount
+  //   return () => {
+  //     stopAutoScroll();
+  //     if (carouselElement) {
+  //       carouselElement.removeEventListener('mouseenter', stopAutoScroll);
+  //       carouselElement.removeEventListener('mouseleave', startAutoScroll);
+  //     }
+  //   };
+  // }, [allImagesLoaded, handleNext]);
 
   useEffect(() => {
     const carousel = carouselRef.current;
@@ -226,9 +226,9 @@ export default function App() {
       <div className="w-full max-w-[128rem] mx-auto relative flex flex-col items-center justify-center">
         <div className="text-center mb-8 md:mb-12">
           {/* CHANGE: Responsive font sizes */}
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800">Highlighted Event</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800">Karya & Aksi Terbaru</h1>
           <p className="text-base md:text-lg text-gray-600 mt-2 max-w-2xl mx-auto">
-            A showcase of creative work, presented story-style with infinite scrolling.
+            Event terbaru yang lagi kami sorot
           </p>
         </div>
 
@@ -250,14 +250,14 @@ export default function App() {
                        w-full h-full
                        overflow-x-auto 
                        snap-x snap-mandatory
-                       scroll-smooth "
+                       [-webkit-overflow-scrolling:touch] "
             style={{ scrollbarWidth: 'none', '-ms-overflow-style': 'none' }}
           >
             {infiniteItems.map((item, index) => (
               <StoryItem
                 key={`${item.id}-${Math.floor(index / items.length)}`}
                 item={item}
-                isActive={getDisplayIndex(index) === getDisplayIndex(currentIndex)}
+                isActive={currentIndex % items.length === index % items.length}
                 onImageLoad={index < items.length ? handleImageLoad : undefined}
               />
             ))}
