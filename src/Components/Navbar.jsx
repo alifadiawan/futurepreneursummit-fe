@@ -140,9 +140,9 @@ const Navbar = () => {
                             exit="hidden"
                         >
                             <motion.a href="/" className="text-white hover:text-gray-300" variants={menuItemVariants}>Home</motion.a>
-                            <motion.a href="#aboutus" className="text-white hover:text-gray-300" variants={menuItemVariants}>About</motion.a>
+                            <motion.a href="/#aboutus" className="text-white hover:text-gray-300" variants={menuItemVariants}>About</motion.a>
                             <motion.a href="/#events" className="text-white hover:text-gray-300" variants={menuItemVariants}>Events</motion.a>
-                            <motion.a href="#" className="text-white hover:text-gray-300" variants={menuItemVariants}>News</motion.a>
+                            <motion.a href="/news" className="text-white hover:text-gray-300" variants={menuItemVariants}>News</motion.a>
                             <motion.a href="#" className="text-white hover:text-gray-300" variants={menuItemVariants}>Contact</motion.a>
                         </motion.div>
                     )}

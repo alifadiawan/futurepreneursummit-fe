@@ -12,6 +12,7 @@ import FuturecompetitionSection from '../Sections/FuturecompetitionSection';
 import PortfolioSection from '../Sections/PortfolioSection';
 import OrganizationsSection from '../Sections/OrganizationsSection';
 import SponsorsSection from '../Sections/SponsorsSection';
+import HeroSection2 from '../Sections/HeroSection2';
 
 
 const LandingPage = () => {
@@ -24,6 +25,9 @@ const LandingPage = () => {
 
       {/* Brand Carouse; */}
       <LogoSlider />
+
+      {/* Hero 2 */}
+      <HeroSection2 />
 
       <AboutUsSection />
 

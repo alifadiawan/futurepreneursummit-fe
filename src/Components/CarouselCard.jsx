@@ -75,51 +75,51 @@ const EventCard = ({ title, date, location, featured_guest_star, subtitle, image
     const [dateNum, ...dateMonth] = date.split(' ');
 
     return (
-        <div className="flex-shrink-0 w-full">
-            <div className="bg-gray-900 rounded-3xl  overflow-hidden flex flex-col h-full">
-                <div
-                    className="relative flex-grow text-white"
-                    style={{ aspectRatio: '210 / 297' }} // or '7 / 10', or '2 / 3' for simplified ratio
-                >
-                    <img
-                        src={imageUrl}
-                        alt={title}
-                        className="absolute top-0 left-0 w-full h-full object-cover z-0"
-                        onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.src = 'https://placehold.co/600x800/333/FFF?text=Image+Error';
-                        }}
-                    />
-                </div>
-                <div className="p-4 bg-gray-800/50 backdrop-blur-sm border-t border-white/10 text-white">
-                    <header className="flex justify-between items-start mb-5">
-                        <h3 className="font-extrabold text-2xl uppercase tracking-wider drop-shadow-lg">{location}</h3>
-                        <div className="text-center">
-                            <p className="font-bold text-md bg-green-600 rounded-full px-4">Available</p>
-                        </div>
-                    </header>
-                    <div className="flex-grow"></div>
-                    <footer className="drop-shadow-lg">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="text-center bg-white/10 backdrop-blur-sm p-2 rounded-lg border border-white/20">
-                                <p className="text-4xl font-bold leading-none">{dateNum}</p>
-                                <p className="text-md font-semibold">{dateMonth.join(' ')}</p>
-                            </div>
-                            <div className="flex-1">
-                                <h2 className="text-xl font-bold leading-tight">{title}</h2>
-                                <p className="text-sm text-gray-300">{subtitle}</p>
-                            </div>
-                        </div>
-                    </footer>
-                    <a
-                        href="/event-detail"
-                        className="block text-center bg-purple-600 text-white font-bold py-3 px-4 rounded-xl hover:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-400 focus:ring-opacity-50 transition-all duration-300 transform hover:scale-105"
+            <div className="flex-shrink-0 w-full">
+                <div className="bg-gray-900 rounded-3xl  overflow-hidden flex flex-col h-full">
+                    <div
+                        className="relative flex-grow text-white"
+                        style={{ aspectRatio: '210 / 297' }} // or '7 / 10', or '2 / 3' for simplified ratio
                     >
-                        DAFTAR
-                    </a>
+                        <img
+                            src={imageUrl}
+                            alt={title}
+                            className="absolute top-0 left-0 w-full h-full object-cover z-0"
+                            onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = 'https://placehold.co/600x800/333/FFF?text=Image+Error';
+                            }}
+                        />
+                    </div>
+                    <div className="p-4 bg-gray-800/50 backdrop-blur-sm border-t border-white/10 text-white">
+                        <header className="flex justify-between items-start mb-5">
+                            <h3 className="font-extrabold text-2xl uppercase tracking-wider drop-shadow-lg">{location}</h3>
+                            <div className="text-center">
+                                <p className="font-bold text-md bg-green-600 rounded-full px-4">Available</p>
+                            </div>
+                        </header>
+                        <div className="flex-grow"></div>
+                        <footer className="drop-shadow-lg">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="text-center bg-white/10 backdrop-blur-sm p-2 rounded-lg border border-white/20">
+                                    <p className="text-4xl font-bold leading-none">{dateNum}</p>
+                                    <p className="text-md font-semibold">{dateMonth.join(' ')}</p>
+                                </div>
+                                <div className="flex-1">
+                                    <h2 className="text-xl font-bold leading-tight">{title}</h2>
+                                    <p className="text-sm text-gray-300">{subtitle}</p>
+                                </div>
+                            </div>
+                        </footer>
+                        <a
+                            href="/event-detail"
+                            className="block text-center bg-purple-600 text-white font-bold py-3 px-4 rounded-xl hover:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-400 focus:ring-opacity-50 transition-all duration-300 transform hover:scale-105"
+                        >
+                            DAFTAR
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
     );
 };
 
