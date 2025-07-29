@@ -64,7 +64,7 @@ const FuturecompetitionSection = () => {
                     <div className="mx-auto pt-20 bg-black/20 backdrop-blur-md ">
 
                         {/* --- Section 1: Introduction --- */}
-                        <div className="container mx-auto flex flex-col w-full items-center justify-center gap-12 mb-2 mt-12 ">
+                        <div className="container mx-auto flex flex-col w-full items-center justify-center gap-12 mb-2 mt-12 px-6 lg:px-0">
                             <img src={natinalcompetition} className="max-w-2xl w-full" alt="logo_national" />
 
                             <div className="flex flex-col-reverse md:flex-row gap-8 items-center mt">
@@ -95,7 +95,7 @@ const FuturecompetitionSection = () => {
                         </div>
 
                         {/* --- Section 3: Competition Categories --- */}
-                        <section id="kompetisi" className="mt-4 py-12 w-full bg-black/10 backdrop-blur-md  pb-30">
+                        <section id="kompetisi" className="mt-4 py-12 w-full bg-black/10 backdrop-blur-md px-6 pb-30">
                             {/* <hr className="mb-12 border-t-4 rounded-lg border-zinc-200 w-full mx-auto" /> */}
 
                             <div className="text-center mb-16">

@@ -1,10 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-// Sample images for demo
-const bg = 'https://picsum.photos/1600/900?random=1';
-const bg2 = 'https://picsum.photos/1600/900?random=2';
-const bghp = 'https://picsum.photos/600/800?random=1';
+import bg from '../assets/ip.png'
+import bghp from '../assets/FYX2026.png'
 
 const initialItems = [
   { 
@@ -22,8 +19,8 @@ const initialItems = [
     title: 'City at Dusk', 
     category: 'Photography', 
     img: {
-      desktop: bg2, // 16:9 for desktop
-      mobile: 'https://picsum.photos/600/800?random=2'    // 3:4 for mobile
+      desktop: bg, // 16:9 for desktop
+      mobile: bghp    // 3:4 for mobile
     },
     description: 'Stunning photograph...' 
   },
@@ -32,8 +29,8 @@ const initialItems = [
     title: 'Abstract Dreams', 
     category: 'Digital Art', 
     img: {
-      desktop: 'https://picsum.photos/1600/900?random=3', // 16:9 for desktop
-      mobile: 'https://picsum.photos/600/800?random=3'    // 3:4 for mobile
+      desktop: bg, // 16:9 for desktop
+      mobile: bghp    // 3:4 for mobile
     },
     description: 'A colorful and dynamic piece.' 
   },
@@ -320,8 +317,8 @@ export default function App() {
             <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-gray-700" />
           </button>
 
-          {/* Clickable navigation zones overlay */}
-          <div className="absolute inset-0 z-10 flex">
+          {/* Clickable navigation zones overlay - Desktop only */}
+          <div className="absolute inset-0 z-10 hidden md:flex">
             {/* Left click zone */}
             <div 
               className="w-[30%] h-full cursor-pointer flex items-center justify-start pl-4 group"
