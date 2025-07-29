@@ -3,7 +3,6 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import backgroundImage3 from '../assets/ip.png';
 import backgroundImage4 from '../assets/bg-purple.png';
 
-// You can replace this with your own data
 const initialItems = [
   { id: 1, title: 'Forest Wanderer', category: 'Illustration', img: backgroundImage3, description: 'A beautiful illustration...' },
   { id: 2, title: 'City at Dusk', category: 'Photography', img: backgroundImage4, description: 'Stunning photograph...' },
@@ -13,34 +12,57 @@ const initialItems = [
 ];
 
 // Individual Story Item Component
-const StoryItem = ({ item, isActive, onImageLoad }) => (
-  <div
-    className={`
+const StoryItem = ({ item, isActive, onImageLoad }) => {
+  const imgRef = useRef(null);
+
+  // FIX: Handles image loading for cached images, a common issue on iOS/Safari.
+  useEffect(() => {
+    const img = imgRef.current;
+    if (!img || !onImageLoad) return;
+
+    const handleLoad = () => {
+      onImageLoad();
+    };
+
+    if (img.complete) {
+      handleLoad();
+    } else {
+      img.addEventListener('load', handleLoad);
+    }
+
+    return () => {
+      img.removeEventListener('load', handleLoad);
+    };
+  }, [item.img, onImageLoad]);
+  
+  return (
+    <div
+      className={`
       snap-center flex-shrink-0 
-      // CHANGE: Use viewport width for mobile and clamp for desktop
       w-[90vw] md:w-[clamp(600px,80vw,1600px)] 
-      // CHANGE: Use a more portrait-friendly aspect ratio for mobile
       aspect-[3/4] md:aspect-[16/9]
       transition-all duration-500 ease-out transform
       rounded-2xl overflow-hidden
       ${isActive ? 'scale-100' : 'scale-95 opacity-50'}
     `}
-  >
-    <div className="relative w-full h-full bg-black/90">
-      <a href="https://www.google.com/" target='_blank' rel="noopener noreferrer">
-        <img
-          src={item.img}
-          alt={item.title}
-          className="w-full h-full object-cover transition-opacity duration-300"
-          loading="lazy"
-          onLoad={onImageLoad}
-          onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/600x800/cccccc/ffffff?text=Image+Not+Found'; }}
-        />
-        <div className="absolute inset-0 "></div>
-      </a>
+    >
+      <div className="relative w-full h-full bg-black/90">
+        <a href="https://www.google.com/" target='_blank' rel="noopener noreferrer">
+          <img
+            ref={imgRef}
+            src={item.img}
+            alt={item.title}
+            className="w-full h-full object-cover transition-opacity duration-300"
+            loading="lazy"
+            onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/600x800/cccccc/ffffff?text=Image+Not+Found'; }}
+          />
+          <div className="absolute inset-0 "></div>
+        </a>
+      </div>
     </div>
-  </div>
-);
+  );
+};
+
 
 // Main App Component
 export default function App() {
@@ -50,7 +72,6 @@ export default function App() {
   const carouselRef = useRef(null);
   const timeoutRef = useRef(null);
   const isTransitioning = useRef(false);
-  const autoScrollRef = useRef(null);
 
   const infiniteItems = [...items, ...items, ...items];
   const totalImages = items.length;
@@ -80,7 +101,6 @@ export default function App() {
 
   const handleNext = useCallback(() => {
     if (isTransitioning.current) return;
-    // The scroll handler will update the currentIndex, which will reset the auto-scroll timer
     const newIndex = currentIndex + 1;
     scrollToIndex(newIndex);
   }, [currentIndex, scrollToIndex]);
@@ -115,41 +135,6 @@ export default function App() {
     }
     setCurrentIndex(detectedIndex);
   }, [items.length, scrollToIndexInstant]);
-
-  // useEffect(() => {
-  //   const startAutoScroll = () => {
-  //     autoScrollRef.current = setInterval(() => {
-  //       handleNext();
-  //     }, 4000); // (3000ms = 3 seconds)
-  //   };
-
-  //   const stopAutoScroll = () => {
-  //     if (autoScrollRef.current) {
-  //       clearInterval(autoScrollRef.current);
-  //     }
-  //   };
-
-  //   // Only start scrolling when all images are loaded
-  //   if (allImagesLoaded) {
-  //     startAutoScroll();
-  //   }
-
-  //   // Add event listeners for pausing on hover
-  //   const carouselElement = carouselRef.current;
-  //   if (carouselElement) {
-  //     carouselElement.addEventListener('mouseenter', stopAutoScroll);
-  //     carouselElement.addEventListener('mouseleave', startAutoScroll);
-  //   }
-
-  //   // Cleanup function to clear interval and remove listeners on unmount
-  //   return () => {
-  //     stopAutoScroll();
-  //     if (carouselElement) {
-  //       carouselElement.removeEventListener('mouseenter', stopAutoScroll);
-  //       carouselElement.removeEventListener('mouseleave', startAutoScroll);
-  //     }
-  //   };
-  // }, [allImagesLoaded, handleNext]);
 
   useEffect(() => {
     const carousel = carouselRef.current;
@@ -225,7 +210,6 @@ export default function App() {
       )}
       <div className="w-full max-w-[128rem] mx-auto relative flex flex-col items-center justify-center">
         <div className="text-center mb-8 md:mb-12">
-          {/* CHANGE: Responsive font sizes */}
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800">Karya & Aksi Terbaru</h1>
           <p className="text-base md:text-lg text-gray-600 mt-2 max-w-2xl mx-auto">
             Event terbaru yang lagi kami sorot
@@ -233,17 +217,14 @@ export default function App() {
         </div>
 
         <div className="w-full h-[65vh] md:h-[70vh] relative flex items-center justify-center">
-          {/* Left Arrow */}
           <button
             onClick={handlePrev}
-            // CHANGE: Adjust arrow position for mobile vs desktop
             className="flex absolute  left-0 md:left-2 lg:left-[-20px] z-10 bg-white/80 backdrop-blur-sm rounded-full p-2 md:p-3 shadow-md hover:bg-white transition-all duration-200"
             aria-label="Previous Item"
           >
             <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-gray-700" />
           </button>
 
-          {/* Carousel Container */}
           <div
             ref={carouselRef}
             className="flex flex-row flex-nowrap space-x-4 md:space-x-8
@@ -263,10 +244,8 @@ export default function App() {
             ))}
           </div>
 
-          {/* Right Arrow */}
           <button
             onClick={handleNext}
-            // CHANGE: Adjust arrow position for mobile vs desktop
             className="flex absolute right-0 md:right-2 lg:right-[-20px] z-10 bg-white/80 backdrop-blur-sm rounded-full p-2 md:p-3 shadow-md hover:bg-white transition-all duration-200"
             aria-label="Next Item"
           >
@@ -274,7 +253,6 @@ export default function App() {
           </button>
         </div>
 
-        {/* Indicator dots */}
         <div className="flex space-x-2 mt-6">
           {items.map((_, index) => (
             <button
