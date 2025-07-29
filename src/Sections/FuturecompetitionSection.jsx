@@ -1,13 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import natinalcompetition from '../assets/programs/national_competition-3.png';
-import backgroundImage from '../assets/bg-green.jpeg';
-import backgroundImage2 from '../assets/bg-green-2.jpeg';
 import backgroundImage3 from '../assets/IMG_0389.PNG';
+import Modal from '../Components/Modal';
 
-import bgblack1 from '../assets/black.jpg';
-import bgblack2 from '../assets/black-2.jpg';
-
-// import { Head } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 
 import startupfounder from '../assets/programs/startup_founder.png';
@@ -16,22 +11,37 @@ import futureminds from '../assets/programs/futureminds.png';
 import twibbonchampion from '../assets/programs/twibbon_champion.png';
 import hadiah from '../assets/20jt.png';
 
-const CompetitionCard = ({ logo, title, description, link = "#" }) => (
-    <motion.div
-        whileHover={{ scale: 1.05 }}
-        className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 text-center flex flex-col items-center shadow-xl hover:shadow-2xl transition-all duration-300"
-    >
-        <div className="p-4 mb-6">
-            <img src={logo} alt={`${title} logo`} className="h-56 w-56 object-contain" />
-        </div>
-        <h3 className="font-bold text-2xl text-gray-800 mb-3">{title}</h3>
-        <p className="text-gray-600 text-lg mb-8">{description}</p>
-        <a href={link}
-            className="mt-auto w-full rounded-full bg-gradient-to-r from-green-500 to-emerald-600 py-3 px-6 text-center font-bold text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
-            Daftar Sekarang
-        </a>
-    </motion.div>
-);
+const CompetitionCard = ({ logo, title, description, link }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    return (
+        <>
+            <Modal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                title="Event Akan Segera Hadir"
+                message="Event ini akan segera hadir."
+            >                
+            </Modal>
+            <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 text-center flex flex-col items-center shadow-xl hover:shadow-2xl transition-all duration-300"
+            >
+                <div className="p-4 mb-6">
+                    <img src={logo} alt={`${title} logo`} className="h-56 w-56 object-contain" />
+                </div>
+                <h3 className="font-bold text-2xl text-gray-800 mb-3">{title}</h3>
+                <p className="text-gray-600 text-lg mb-8">{description}</p>
+                <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="mt-auto w-full rounded-full bg-gradient-to-r from-green-500 to-emerald-600 py-3 px-6 text-center font-bold text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                    Daftar Sekarang
+                </button>
+            </motion.div>
+        </>
+
+    );
+};
 
 const FuturecompetitionSection = () => {
     return (
@@ -51,13 +61,13 @@ const FuturecompetitionSection = () => {
                     {/* This is likely for a background image or effect, leaving as is */}
                     {/* <div className="absolute inset-0"></div> */}
 
-                    <div className="container mx-auto px-6 lg:px-24 md:px-12 pt-20 pb-32">
+                    <div className="mx-auto pt-20 bg-black/20 backdrop-blur-md ">
 
                         {/* --- Section 1: Introduction --- */}
-                        <div className="flex flex-col w-full items-center justify-center gap-12 mb-2 mt-12">
+                        <div className="container mx-auto flex flex-col w-full items-center justify-center gap-12 mb-2 mt-12 ">
                             <img src={natinalcompetition} className="max-w-2xl w-full" alt="logo_national" />
 
-                            <div className="flex flex-col-reverse md:flex-row gap-8 items-center">
+                            <div className="flex flex-col-reverse md:flex-row gap-8 items-center mt">
                                 <div className="flex flex-col gap-6 w-full md:w-2/3">
                                     <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg text-gray-700 p-6 text-justify text-xl md:text-2xl">
                                         Futurepreneur National Competition adalah ajang wirausaha kekinian untuk generasi muda yang mencakup empat kategori seru: kompetisi ide bisnis inovatif, kompetisi esai inspiratif, kompetisi poster kreatif, dan kompetisi post twibbon yang viral, semuanya untuk mengasah kreativitas dan semangat entrepreneur digital di era sekarang.
@@ -65,10 +75,10 @@ const FuturecompetitionSection = () => {
                                         Ayo tunjukkan potensimu untuk menjadi entrepreneur masa depan!
                                     </div>
                                     <div className="flex flex-col lg:flex-row text-center gap-2">
-                                        <a href="#guidebook" className="rounded-full bg-blue-600 hover:bg-blue-700 active:bg-blue-700 px-8 py-4 text-lg font-bold text-white transition-colors duration-300">
+                                        <a href="#guidebook" className="w-full rounded-full bg-blue-950 hover:bg-blue-700 active:bg-blue-700 px-8 py-4 text-lg font-bold text-white transition-colors duration-300">
                                             Download Guidebook
                                         </a>
-                                        <a href="#guidebook" className="rounded-full bg-emerald-600 px-8 py-4 text-lg font-bold text-white hover:bg-emerald-700 transition-colors duration-300">
+                                        <a href="#guidebook" className="w-full rounded-full bg-purple-600 px-8 py-4 text-lg font-bold text-white hover:bg-emerald-500 transition-colors duration-300">
                                             Daftar Sekarang
                                         </a>
                                     </div>
@@ -85,14 +95,14 @@ const FuturecompetitionSection = () => {
                         </div>
 
                         {/* --- Section 3: Competition Categories --- */}
-                        <section id="kompetisi" className="py-2">
-                            <hr className="mb-12 border-t-2 border-zinc-200 w-full mx-auto" />
+                        <section id="kompetisi" className="mt-4 py-12 w-full bg-black/10 backdrop-blur-md  pb-30">
+                            {/* <hr className="mb-12 border-t-4 rounded-lg border-zinc-200 w-full mx-auto" /> */}
 
                             <div className="text-center mb-16">
                                 <h2 className="text-4xl font-bold text-white mb-4">Pilih Kategorimu</h2>
                                 <p className="text-xl text-white">Empat kategori yang akan menguji kreativitas dan inovasimu</p>
                             </div>
-                            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 container mx-auto">
                                 <CompetitionCard
                                     logo={startupfounder}
                                     title="Startup Founder Clash"
