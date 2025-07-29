@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import bg from '../assets/ip.png';
-import bg2 from '../assets/bg-purple.png'
-import bghp from '../assets/FYX2026.png';
+
+// Sample images for demo
+const bg = 'https://picsum.photos/1600/900?random=1';
+const bg2 = 'https://picsum.photos/1600/900?random=2';
+const bghp = 'https://picsum.photos/600/800?random=1';
 
 const initialItems = [
   { 
@@ -20,8 +22,8 @@ const initialItems = [
     title: 'City at Dusk', 
     category: 'Photography', 
     img: {
-      desktop: bg, // 16:9 for desktop
-      mobile: bghp    // 3:4 for mobile
+      desktop: bg2, // 16:9 for desktop
+      mobile: 'https://picsum.photos/600/800?random=2'    // 3:4 for mobile
     },
     description: 'Stunning photograph...' 
   },
@@ -30,8 +32,8 @@ const initialItems = [
     title: 'Abstract Dreams', 
     category: 'Digital Art', 
     img: {
-      desktop: bg, // 16:9 for desktop
-      mobile: bghp    // 3:4 for mobile
+      desktop: 'https://picsum.photos/1600/900?random=3', // 16:9 for desktop
+      mobile: 'https://picsum.photos/600/800?random=3'    // 3:4 for mobile
     },
     description: 'A colorful and dynamic piece.' 
   },
@@ -164,6 +166,31 @@ export default function App() {
     scrollToIndex(newIndex);
   }, [currentIndex, scrollToIndex]);
 
+  // New function to handle clicks on the carousel area
+  const handleCarouselClick = useCallback((e) => {
+    if (isTransitioning.current) return;
+    
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+    
+    const rect = carousel.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const carouselWidth = rect.width;
+    
+    // Define click zones: left 30%, center 40%, right 30%
+    const leftZone = carouselWidth * 0.3;
+    const rightZone = carouselWidth * 0.7;
+    
+    if (clickX < leftZone) {
+      // Clicked on left side - go to previous
+      handlePrev();
+    } else if (clickX > rightZone) {
+      // Clicked on right side - go to next
+      handleNext();
+    }
+    // Center zone does nothing to allow for other interactions if needed
+  }, [handleNext, handlePrev]);
+
   const handleInfiniteScroll = useCallback((detectedIndex) => {
     const itemsLength = items.length;
     if (detectedIndex >= items.length * 2) {
@@ -287,11 +314,45 @@ export default function App() {
         <div className="w-full h-[65vh] md:h-[70vh] relative flex items-center justify-center">
           <button
             onClick={handlePrev}
-            className="flex absolute  left-0 md:left-2 lg:left-[-20px] z-10 bg-white/80 backdrop-blur-sm rounded-full p-2 md:p-3 shadow-md hover:bg-white transition-all duration-200"
+            className="flex absolute left-0 md:left-2 lg:left-[-20px] z-20 bg-white/80 backdrop-blur-sm rounded-full p-2 md:p-3 shadow-md hover:bg-white transition-all duration-200"
             aria-label="Previous Item"
           >
             <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-gray-700" />
           </button>
+
+          {/* Clickable navigation zones overlay */}
+          <div className="absolute inset-0 z-10 flex">
+            {/* Left click zone */}
+            <div 
+              className="w-[30%] h-full cursor-pointer flex items-center justify-start pl-4 group"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handlePrev();
+              }}
+            >
+              <div className="opacity-0 group-hover:opacity-50 transition-opacity duration-200 bg-black/20 rounded-full p-2">
+                <ChevronLeft className="h-6 w-6 text-white" />
+              </div>
+            </div>
+            
+            {/* Center zone - no click action */}
+            <div className="w-[40%] h-full"></div>
+            
+            {/* Right click zone */}
+            <div 
+              className="w-[30%] h-full cursor-pointer flex items-center justify-end pr-4 group"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleNext();
+              }}
+            >
+              <div className="opacity-0 group-hover:opacity-50 transition-opacity duration-200 bg-black/20 rounded-full p-2">
+                <ChevronRight className="h-6 w-6 text-white" />
+              </div>
+            </div>
+          </div>
 
           <div
             ref={carouselRef}
@@ -299,7 +360,7 @@ export default function App() {
                        w-full h-full
                        overflow-x-auto 
                        snap-x snap-mandatory
-                       [-webkit-overflow-scrolling:touch] "
+                       [-webkit-overflow-scrolling:touch]"
             style={{ scrollbarWidth: 'none', '-ms-overflow-style': 'none' }}
           >
             {infiniteItems.map((item, index) => (
@@ -315,7 +376,7 @@ export default function App() {
 
           <button
             onClick={handleNext}
-            className="flex absolute right-0 md:right-2 lg:right-[-20px] z-10 bg-white/80 backdrop-blur-sm rounded-full p-2 md:p-3 shadow-md hover:bg-white transition-all duration-200"
+            className="flex absolute right-0 md:right-2 lg:right-[-20px] z-20 bg-white/80 backdrop-blur-sm rounded-full p-2 md:p-3 shadow-md hover:bg-white transition-all duration-200"
             aria-label="Next Item"
           >
             <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-gray-700" />
