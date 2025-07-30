@@ -3,36 +3,33 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import bg from '../assets/ip.png'
 import bghp from '../assets/FYX2026.png'
 
+import competition from '../assets/assets_banner/COMPETITION.webp';
+import hpKompetisi from '../assets/assets_banner/HP-KOMPETISI.webp';
+import hpWebinar from '../assets/assets_banner/HP-WEBINAR.webp';
+import webinar from '../assets/assets_banner/WEBINAR.webp';
+
+
 const initialItems = [
-  { 
-    id: 1, 
-    title: 'Forest Wanderer', 
-    category: 'Illustration', 
-    img: {
-      desktop: bg, // 16:9 for desktop
-      mobile: bghp    // 3:4 for mobile
-    },
-    description: 'A beautiful illustration...' 
+  {
+    id: 1,
+    title: 'Competition',
+    category: 'Event Banner',
+    img: { desktop: competition, mobile: hpKompetisi },
+    description: 'Banner for competition event.',
   },
-  { 
-    id: 2, 
-    title: 'City at Dusk', 
-    category: 'Photography', 
-    img: {
-      desktop: bg, // 16:9 for desktop
-      mobile: bghp    // 3:4 for mobile
-    },
-    description: 'Stunning photograph...' 
+  {
+    id: 2,
+    title: 'Webinar',
+    category: 'Event Banner',
+    img: { desktop: webinar, mobile: hpWebinar },
+    description: 'Banner for webinar event.',
   },
-  { 
-    id: 3, 
-    title: 'Abstract Dreams', 
-    category: 'Digital Art', 
-    img: {
-      desktop: bg, // 16:9 for desktop
-      mobile: bghp    // 3:4 for mobile
-    },
-    description: 'A colorful and dynamic piece.' 
+  {
+    id: 3,
+    title: 'Webinar',
+    category: 'Event Banner',
+    img: { desktop: bg, mobile: bghp },
+    description: 'Banner for webinar event.',
   },
 ];
 

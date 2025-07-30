@@ -1,57 +1,88 @@
 import React from 'react'
 import CarouselCard from '../Components/CarouselCard'
-import { div } from 'framer-motion/client';
-import bgbg from '../assets/bg-konser.png';
-import bgbg2 from '../assets/bg-purple-2.jpg';
-import BG_IMAGE_URL from '../assets/5185208.jpg';
-import BG_IMAGE_URL_2 from '../assets/bg-purple-2GS.jpg';
 import BG_IMAGE_URL_3 from '../assets/bg_hiring.png';
+import { div } from 'framer-motion/client';
+import { motion } from 'framer-motion';
 
 import bandung from '../assets/bandung.webp';
 
-import { motion } from 'framer-motion';
-
+import jember from '../assets/assets_banner/JEMBER.webp';
+import malang from '../assets/assets_banner/MALANG.webp';
+import purwokerto from '../assets/assets_banner/PURWOKERTO.webp';
+import semarang from '../assets/assets_banner/SEMARANG.webp';
+import solo from '../assets/assets_banner/SOLO.webp';
+import surabay from '../assets/assets_banner/SURABAY.webp';
+import yogyakarta from '../assets/assets_banner/YOGYAKARTA.webp';
 
 const OurEvents = () => {
 
   const events = [
-    {
-      id: 1,
-      location: 'Surabaya',
-      date: '10 Desember 2023',
-      title: 'Future Entrepreneur Summit',
-      subtitle: 'The Journey of the Gen Z Futurepreneur',
-      imageUrl: 'https://futurepreneursummit.com/storage/SURABAYA.jpg',
-      featured_guest_star: 'Fiki Naki',
-    },
-    {
-      id: 2,
-      location: 'Purwokerto',
-      date: '10 Desember 2023',
-      title: 'Future Entrepreneur Summit',
-      subtitle: 'The Journey of the Gen Z Futurepreneur',
-      imageUrl: bandung,
-      featured_guest_star: 'Fiki Naki',
-    },
-    {
-      id: 3,
-      location: 'Purwokerto',
-      date: '10 Desember 2023',
-      title: 'Future Entrepreneur Summit',
-      subtitle: 'The Journey of the Gen Z Futurepreneur',
-      imageUrl: 'https://futurepreneursummit.com/storage/SURABAYA.jpg',
-      featured_guest_star: 'Fiki Naki',
-    },
-    {
-      id: 4,
-      location: 'Purwokerto',
-      date: '10 Desember 2023',
-      title: 'Future Entrepreneur Summit',
-      subtitle: 'The Journey of the Gen Z Futurepreneur',
-      imageUrl: 'https://futurepreneursummit.com/storage/SURABAYA.jpg',
-      featured_guest_star: 'Fiki Naki',
-    },
-  ];
+  {
+    id: 1,
+    location: 'Surabaya',
+    date: 'Desember 2025',
+    title: 'Future Entrepreneur Summit',
+    subtitle: 'The Journey of the Gen Z Futurepreneur',
+    imageUrl: surabay,
+    featured_guest_star: 'Fiki Naki',
+  },
+  {
+    id: 2,
+    location: 'Purwokerto',
+    date: 'Desember 2025',
+    title: 'Future Entrepreneur Summit',
+    subtitle: 'The Journey of the Gen Z Futurepreneur',
+    imageUrl: purwokerto,
+    featured_guest_star: 'Fiki Naki',
+  },
+  {
+    id: 3,
+    location: 'Jember',
+    date: 'Desember 2025',
+    title: 'Future Entrepreneur Summit',
+    subtitle: 'The Journey of the Gen Z Futurepreneur',
+    imageUrl: jember,
+    featured_guest_star: 'Fiki Naki',
+  },
+  {
+    id: 4,
+    location: 'Semarang',
+    date: 'Desember 2025',
+    title: 'Future Entrepreneur Summit',
+    subtitle: 'The Journey of the Gen Z Futurepreneur',
+    imageUrl: semarang,
+    featured_guest_star: 'Fiki Naki',
+  },
+  {
+    id: 5,
+    location: 'Malang',
+    date: 'Desember 2025',
+    title: 'Future Entrepreneur Summit',
+    subtitle: 'The Journey of the Gen Z Futurepreneur',
+    imageUrl: malang,
+    featured_guest_star: 'Fiki Naki',
+  },
+  {
+    id: 6,
+    location: 'Solo',
+    date: 'Desember 2025',
+    title: 'Future Entrepreneur Summit',
+    subtitle: 'The Journey of the Gen Z Futurepreneur',
+    imageUrl: solo,
+    featured_guest_star: 'Fiki Naki',
+  },
+  {
+    id: 7,
+    location: 'Yogyakarta',
+    date: 'Desember 2025',
+    title: 'Future Entrepreneur Summit',
+    subtitle: 'The Journey of the Gen Z Futurepreneur',
+    imageUrl: yogyakarta,
+    featured_guest_star: 'Fiki Naki',
+  },
+];
+
+
   const handleButtonClick = () => {
     console.log('Button clicked!');
   };

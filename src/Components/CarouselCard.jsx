@@ -69,7 +69,7 @@ const Arrow = ({ direction, onClick }) => (
 
 
 // --- Event Card Component ---
-// Now accepts individual props for better reusability.
+
 const EventCard = ({ title, date, location, featured_guest_star, subtitle, imageUrl }) => {
     // A simple helper to split the date string for styling.
     const [dateNum, ...dateMonth] = date.split(' ');
