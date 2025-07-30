@@ -21,7 +21,7 @@ const CompetitionCard = ({ logo, title, description, link }) => {
                 onClose={() => setIsModalOpen(false)}
                 title="Event Akan Segera Hadir"
                 message="Event ini akan segera hadir."
-            >                
+            >
             </Modal>
             <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -44,6 +44,8 @@ const CompetitionCard = ({ logo, title, description, link }) => {
 };
 
 const FuturecompetitionSection = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <>
             {/* <Head title="Futurepreneur National Competition" /> */}
@@ -60,7 +62,13 @@ const FuturecompetitionSection = () => {
                 <main className="relative overflow-hidden">
                     {/* This is likely for a background image or effect, leaving as is */}
                     {/* <div className="absolute inset-0"></div> */}
-
+            <Modal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                title="Event Akan Segera Hadir"
+                message="Event ini akan segera hadir."
+            >
+            </Modal>
                     <div className="mx-auto pt-20 bg-black/20 backdrop-blur-md ">
 
                         {/* --- Section 1: Introduction --- */}
@@ -75,12 +83,12 @@ const FuturecompetitionSection = () => {
                                         Ayo tunjukkan potensimu untuk menjadi entrepreneur masa depan!
                                     </div>
                                     <div className="flex flex-col lg:flex-row text-center gap-2">
-                                        <a href="#guidebook" className="w-full rounded-full bg-blue-950 hover:bg-blue-700 active:bg-blue-700 px-8 py-4 text-lg font-bold text-white transition-colors duration-300">
+                                        <button onClick={() => setIsModalOpen(true)} className="w-full rounded-full bg-blue-950 hover:bg-blue-900 active:bg-blue-900 px-8 py-4 text-lg font-bold text-white transition-colors duration-300">
                                             Download Guidebook
-                                        </a>
-                                        <a href="#guidebook" className="w-full rounded-full bg-purple-600 px-8 py-4 text-lg font-bold text-white hover:bg-emerald-500 transition-colors duration-300">
+                                        </button>
+                                        <button  onClick={() => setIsModalOpen(true)} className="w-full rounded-full bg-purple-600 px-8 py-4 text-lg font-bold text-white hover:bg-purple-500 transition-colors duration-300">
                                             Daftar Sekarang
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
 
