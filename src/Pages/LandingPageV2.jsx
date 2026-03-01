@@ -20,6 +20,23 @@ import semarang from '../assets/assets_banner/SEMARANG.webp';
 import solo from '../assets/assets_banner/SOLO.webp';
 import surabay from '../assets/assets_banner/SURABAY.webp';
 import yogyakarta from '../assets/assets_banner/YOGYAKARTA.webp';
+import PixelTransition from '../Components/PixelTransition';
+
+import golda from '../assets/sponsors/golda.png';
+import wardah from '../assets/sponsors/wardah.png';
+import pandalovely from '../assets/sponsors/pandalovely.png';
+import miesedap from '../assets/sponsors/miesedap.png';
+import kahf from '../assets/sponsors/kahf.png';
+import bening from '../assets/sponsors/bening.png';
+import yamaha from '../assets/sponsors/yamaha.png';
+
+import sponsor20 from '../assets/sponsors/20.png';
+import sponsor21 from '../assets/sponsors/21.png';
+import sponsor22 from '../assets/sponsors/22.png';
+import sponsor23 from '../assets/sponsors/23.png';
+import sponsor24 from '../assets/sponsors/24.png';
+import sponsor25 from '../assets/sponsors/25.png';
+import sponsor26 from '../assets/sponsors/26.png';
 
 const LandingPageV2 = () => {
 
@@ -30,7 +47,7 @@ const LandingPageV2 = () => {
     { number: '100+', text: 'Team Members' },
   ];
 
-    const events = [
+  const events = [
     {
       id: 1,
       location: 'Surabaya',
@@ -96,46 +113,82 @@ const LandingPageV2 = () => {
     },
   ];
 
+  const portfolioData = [
+    {
+      id: 1,
+      title: 'FUTURE ENTREPRENEUR SUMMIT SURABAYA 2025',
+      youtubeUrl: 'https://www.youtube.com/embed/QZycyxPV9bo?si=W1pZTzDVFZE917y3',
+      tags: ['Surabaya', 'Kapal Api', 'Jeromi Polin'],
+    },
+    {
+      id: 2,
+      title: 'FUTURE ENTREPRENEUR SUMMIT JEMBER 2024',
+      youtubeUrl: 'https://www.youtube.com/embed/5eaj50YPD8Y?si=yZw6--qU5AdsxuFC',
+      tags: ['Next.js', 'Firebase', 'D3.js', 'Framer Motion'],
+    },
+    {
+      id: 3,
+      title: 'Future Entrepreneur Summit - Surabaya (Surabaya Creativepreneur Festival 2023)',
+      youtubeUrl: 'https://www.youtube.com/embed/aCwcJZYmDu0?si=29I9WcK1FirIvKfA',
+      tags: ['Gatsby', 'GraphQL', 'Contentful', 'Styled-Components'],
+    },
+  ];
+
+  const PortfolioCard = ({ project }) => {
+    return (
+      // Main Container: Removed rounded corners and soft shadows. 
+      // Added thick borders, hard offset shadows, and a mechanical "push down" hover state.
+      <div className="bg-white border-[6px] border-black flex flex-col h-full shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[12px] hover:translate-y-[12px] transition-all duration-200">
+
+        {/* Video Container: Added a thick black border at the bottom to separate the iframe from the text */}
+        <div className="w-full h-48 sm:h-56 border-b-[6px] border-black bg-black">
+          <iframe
+            className="w-full h-full grayscale hover:grayscale-0 transition-all duration-300"
+            src={project.youtubeUrl}
+            title={`YouTube video of ${project.title}`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+
+        {/* Content Area: Replaced soft gray text with stark, black, heavily weighted fonts */}
+        <div className="p-6 md:p-8 flex flex-col flex-grow bg-white">
+
+          {/* Title: Uppercase, extra bold, with a thick underline */}
+          <h3 className="text-lg md:text-1xl font-black text-black uppercase tracking-tight mb-4 border-b-[4px] border-black pb-2">
+            {project.title}
+          </h3>
+
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="w-full">
-      <nav className="hidden sm:block absolute top-0 px-8 lg:px-24 w-full h-24 bg-white text-black border-b-[6px] border-black z-30">
+      <nav className="hidden sm:block sticky top-0 px-8 lg:px-24 w-full h-24 bg-white text-black border-b-[6px] border-black">
         <div className="flex flex-row justify-between items-center h-full">
 
-          {/* Neobrutalist Logo Container: Added a harsh shadow and a quirky tilt */}
-          <div className="logo bg-zinc-900 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-2 transform -rotate-2 hover:rotate-0 transition-transform duration-200">
+          {/* NAV LOGO FIX: Swapped bg-zinc-900 for a loud Neobrutalist yellow to match the theme */}
+          <div className="logo bg-purple-700 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-2 transform -rotate-2 hover:rotate-0 transition-transform duration-200">
             <img src={logo} className="w-32" alt="logo" />
           </div>
 
-          {/* Nav Links: Hard shadows, push-down hover state, and bold text */}
+          {/* NAV LINKS FIX: Used bracket notation [5px] to ensure the heavy click animation works properly */}
           <div className="nav-links flex flex-row gap-6 text-lg font-black tracking-wider uppercase">
-            <a
-              href="/"
-              className="px-5 py-2 bg-white border-[3px] border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1.25 hover:translate-y-1.25 hover:bg-purple-400 transition-all"
-            >
+            <a href="/" className="px-5 py-2 bg-white border-[3px] border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[5px] hover:translate-y-[5px] hover:bg-purple-400 transition-all">
               Home
             </a>
-            <a
-              href="#"
-              className="px-5 py-2 bg-white border-[3px] border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1.25 hover:translate-y-1.25 hover:bg-yellow-400 transition-all"
-            >
+            <a href="#" className="px-5 py-2 bg-white border-[3px] border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[5px] hover:translate-y-[5px] hover:bg-yellow-400 transition-all">
               About
             </a>
-            <a
-              href="#"
-              className="px-5 py-2 bg-white border-[3px] border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1.25 hover:translate-y-1.25 hover:bg-orange-400 transition-all"
-            >
+            <a href="#" className="px-5 py-2 bg-white border-[3px] border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[5px] hover:translate-y-[5px] hover:bg-orange-400 transition-all">
               Events
             </a>
-            <a
-              href="#"
-              className="px-5 py-2 bg-white border-[3px] border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1.25 hover:translate-y-1.25 hover:bg-red-400 transition-all"
-            >
+            <a href="#" className="px-5 py-2 bg-white border-[3px] border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[5px] hover:translate-y-[5px] hover:bg-red-400 transition-all">
               News
             </a>
-            <a
-              href="#"
-              className="px-5 py-2 bg-white border-[3px] border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1.25 hover:translate-y-1.25 hover:bg-blue-400 transition-all"
-            >
+            <a href="#" className="px-5 py-2 bg-white border-[3px] border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[5px] hover:translate-y-[5px] hover:bg-blue-400 transition-all">
               Contact
             </a>
           </div>
@@ -143,30 +196,25 @@ const LandingPageV2 = () => {
         </div>
       </nav>
 
-      <section className="hero-section relative mt-5 min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white border-b-[8px] border-black">
-        {/* Preload for LCP optimization */}
+      <section className="hero-section relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-emerald-400 border-b-[8px] border-black">
         <img src={bgImage} alt="" style={{ display: 'none' }} loading="eager" />
 
-        {/* Background: Instead of an edge-to-edge seamless image, we put the image 
-      inside a massive, harsh, bordered box that drops in from the top.
-    */}
+        {/* Background Box */}
         <motion.div
           initial={{ y: "-100vh" }}
           animate={{ y: 0 }}
           transition={{ type: "spring", stiffness: 120, damping: 14 }}
+          // Adjusted the inset so it acts like a framed picture inside the green section
           className="absolute inset-4 sm:inset-12 border-[6px] border-black bg-cover bg-center shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] z-0"
           style={{
             backgroundImage: `url(${bgImage})`,
             willChange: 'transform',
           }}
         >
-          {/* Overlay: Removed the subtle pulsing gradient. 
-          Replaced with a stark color tint that blends harshly with the image. 
-        */}
           <div className="absolute inset-0 bg-blue-500/40 mix-blend-multiply" />
         </motion.div>
 
-        {/* Logo/Content container with an aggressive, springy entrance and a permanent tilt */}
+        {/* HERO CONTENT FIX: Put the solid background, thick border, and heavy drop shadow BACK onto the logo container! */}
         <motion.div
           initial={{ scale: 0, rotate: -25 }}
           animate={{ scale: 1, rotate: -3 }}
@@ -176,9 +224,9 @@ const LandingPageV2 = () => {
             damping: 20,
             delay: 0.3
           }}
-          className="relative z-10 px-12 py-8 hover:rotate-0 transition-transform duration-200"
+          // Added bg-white, borders, and shadows here to make it a brutalist block
+          className="relative z-10 bg-white border-[6px] border-black p-8 sm:p-12 shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:rotate-0 transition-transform duration-200 cursor-default"
         >
-          {/* Your logo or headline text goes inside here */}
           <img src={logo2} className="max-w-sm lg:max-w-xl" alt="fest logo" />
         </motion.div>
       </section>
@@ -420,6 +468,161 @@ const LandingPageV2 = () => {
           <CarouselCard
             events={events}
           />
+
+        </div>
+      </section>
+
+      <section
+        className="py-16 md:py-32 relative overflow-hidden bg-[#ff90e8] border-b-[8px] border-black font-sans"
+      // style={abstractBgStyle} // We are tossing the abstract style in favor of a brutalist solid color
+      >
+        {/* Harsh, retro checkerboard background pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,_#000_25%,_transparent_25%,_transparent_75%,_#000_75%,_#000_100%),_linear-gradient(45deg,_#000_25%,_transparent_25%,_transparent_75%,_#000_75%,_#000_100%)] bg-[size:40px_40px] bg-[position:0_0,_20px_20px] opacity-10 pointer-events-none"></div>
+
+        <div className="container mx-auto lg:px-24 px-6 relative z-10">
+
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            className="text-center mb-16 md:mb-24"
+          >
+            {/* Main Title: Enclosed in a massive, tilted white box */}
+            <div className="inline-block bg-white border-[6px] border-black px-8 py-4 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transform -rotate-2 hover:rotate-1 transition-transform duration-200 cursor-default">
+              <h2 className="text-4xl md:text-6xl font-black tracking-widest text-black uppercase">
+                Our Portfolio
+              </h2>
+            </div>
+
+            {/* Subtitle: No more faded gray. Now a stark yellow tag with a heavy border. */}
+            <div className="mt-8 flex justify-center">
+              <p className="inline-block bg-[#ffde59] text-black font-bold text-base md:text-lg border-[4px] border-black px-6 py-3 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transform rotate-1">
+                A showcase of impactful seminars, events, and entrepreneurial journeys.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Portfolio Grid: Increased the gap to accommodate chunky shadows on the cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
+            {portfolioData.map((project) => (
+              // Note: Ensure your <PortfolioCard /> component matches this aesthetic too!
+              <PortfolioCard key={project.id} project={project} />
+            ))}
+          </div>
+
+          {/* Show More Button: Uncommented, enlarged, and brutalized with heavy physical hover state */}
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
+            className="mt-20 text-center"
+          >
+            <button className="group inline-flex items-center justify-center bg-[#4ade80] border-[6px] border-black text-black font-black uppercase text-xl py-4 px-10 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[12px] hover:translate-y-[12px] hover:bg-[#ffde59] transition-all duration-200">
+              Show More
+              {/* Thick, jagged arrow icon */}
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 ml-4 border-l-[4px] border-black pl-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </motion.div>
+        </div>
+      </section>
+
+      <section
+        // Replaced the invisible white background with a loud, aggressive red/orange and a thick bottom border
+        className="py-16 md:py-24 relative overflow-hidden bg-[#ff5757] border-b-[8px] border-black"
+        id="sponsors" // Changed from 'aboutus' to 'sponsors' for semantic accuracy!
+      >
+        {/* Added a harsh retro dot-grid overlay to give the empty space some texture */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle,_#000_3px,_transparent_3px)] bg-[size:24px_24px] opacity-20 pointer-events-none"></div>
+
+        <div className="container mx-auto lg:px-24 px-6 md:px-12 relative z-10">
+
+          {/* Section Title: Snaps in with a spring, sits at a permanent tilt */}
+          <motion.div
+            initial={{ opacity: 0, y: -50, rotate: -5 }}
+            whileInView={{ opacity: 1, y: 0, rotate: 2 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            className="text-center mb-16 md:mb-24"
+          >
+            {/* Replaced the gradient underline with a massive yellow sticker-style box */}
+            <div className="inline-block bg-[#ffde59] border-[6px] border-black px-10 py-4 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[12px] hover:translate-y-[12px] transition-all duration-200 cursor-default">
+              <h2 className="text-3xl md:text-5xl font-black text-black tracking-widest uppercase">
+                Our Sponsors
+              </h2>
+            </div>
+          </motion.div>
+
+          {/* Grid Container: 
+          Increased the gap to 'gap-6 md:gap-8' so the massive drop shadows don't overlap awkwardly.
+        */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 justify-center gap-6 md:gap-8 w-full">
+
+            {/* Sponsor Wrappers: 
+            I wrapped your PixelTransition components in heavy white boxes. 
+            This ensures the logos have a stark white background to contrast against the red section, 
+            and it gives them all the physical "push down" hover physics!
+          */}
+            <div className="bg-white border-[4px] border-black p-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-200">
+              <PixelTransition imageUrl={golda} title="Futurepreneur National Competition" ctaText="More" ctaLink="#" />
+            </div>
+
+            <div className="bg-white border-[4px] border-black p-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-200">
+              <PixelTransition imageUrl={wardah} title="Futurepreneur Grand Summit Seminar" ctaText="More" ctaLink="#" />
+            </div>
+
+            <div className="bg-white border-[4px] border-black p-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-200">
+              <PixelTransition imageUrl={pandalovely} title="Futurepreneur Online Webinar Soft Skill" ctaText="More" ctaLink="#" />
+            </div>
+
+            <div className="bg-white border-[4px] border-black p-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-200">
+              <PixelTransition imageUrl={kahf} title="Futurepreneur Bootcamp Soft Skill Training" ctaText="More" ctaLink="#" />
+            </div>
+
+            <div className="bg-white border-[4px] border-black p-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-200">
+              <PixelTransition imageUrl={miesedap} title="Futurepreneur International Program" ctaText="More" ctaLink="#" />
+            </div>
+
+            <div className="bg-white border-[4px] border-black p-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-200">
+              <PixelTransition imageUrl={bening} title="Futurepreneur International Program" ctaText="More" ctaLink="#" />
+            </div>
+
+            <div className="bg-white border-[4px] border-black p-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-200">
+              <PixelTransition imageUrl={yamaha} title="Futurepreneur International Program" ctaText="More" ctaLink="#" />
+            </div>
+
+            <div className="bg-white border-[4px] border-black p-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-200">
+              <PixelTransition imageUrl={sponsor20} title="Futurepreneur International Program" ctaText="More" ctaLink="#" />
+            </div>
+
+            <div className="bg-white border-[4px] border-black p-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-200">
+              <PixelTransition imageUrl={sponsor21} title="Futurepreneur International Program" ctaText="More" ctaLink="#" />
+            </div>
+
+            <div className="bg-white border-[4px] border-black p-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-200">
+              <PixelTransition imageUrl={sponsor22} title="Futurepreneur International Program" ctaText="More" ctaLink="#" />
+            </div>
+
+            <div className="bg-white border-[4px] border-black p-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-200">
+              <PixelTransition imageUrl={sponsor23} title="Futurepreneur International Program" ctaText="More" ctaLink="#" />
+            </div>
+
+            <div className="bg-white border-[4px] border-black p-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-200">
+              <PixelTransition imageUrl={sponsor24} title="Futurepreneur International Program" ctaText="More" ctaLink="#" />
+            </div>
+
+            <div className="bg-white border-[4px] border-black p-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-200">
+              <PixelTransition imageUrl={sponsor25} title="Futurepreneur International Program" ctaText="More" ctaLink="#" />
+            </div>
+
+            <div className="bg-white border-[4px] border-black p-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all duration-200">
+              <PixelTransition imageUrl={sponsor26} title="Futurepreneur International Program" ctaText="More" ctaLink="#" />
+            </div>
+          </div>
 
         </div>
       </section>
