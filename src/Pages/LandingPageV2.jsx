@@ -21,6 +21,7 @@ import solo from '../assets/assets_banner/SOLO.webp';
 import surabay from '../assets/assets_banner/SURABAY.webp';
 import yogyakarta from '../assets/assets_banner/YOGYAKARTA.webp';
 import PixelTransition from '../Components/PixelTransition';
+import MAIN_IMAGE_URL from '../assets/programs/grand-summit.png';
 
 import grandsummit from '../assets/rangkaian_acara/1.webp';
 import nationalcompetition from '../assets/rangkaian_acara/2.webp';
@@ -120,7 +121,7 @@ const LandingPageV2 = () => {
   ];
 
   const gridData = [
-    { id: 1, imageUrl: BAZAAR, title: 'Keynote Sessions', text: 'Learn from top industry leaders.', shadowColor: '#D946EF' },
+    { id: 1, imageUrl: BAZAAR, title: 'UMKM Bazaar', text: 'Learn from top industry leaders.', shadowColor: '#D946EF' },
     { id: 2, imageUrl: DOORPRIZE, title: 'Networking Hub', text: 'Connect with fellow founders.', shadowColor: '#2DD4BF' },
     { id: 3, imageUrl: MUSIK, title: 'Pitch Battle', text: 'Watch startups fight for funding.', shadowColor: '#F97316' },
     { id: 4, imageUrl: SEMINAR, title: 'Award Ceremony', text: 'Celebrating the brightest minds.', shadowColor: '#6D28D9' },
@@ -425,12 +426,12 @@ const LandingPageV2 = () => {
       </div>
 
       {/* ABOUT US SECTION */}
-      <section id="about" className="relative py-24 px-6 lg:px-12 flex flex-col items-center justify-center overflow-hidden bg-[#FDF8F5] border-t-8 border-slate-900 font-sans selection:bg-[#D946EF] selection:text-white">
+      <section id="about" className="relative min-h-screen py-24 px-6 lg:px-12 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#34d399] via-[#6ee7b7] to-[#99f6e4] border-t-8 border-slate-900 font-sans selection:bg-[#D946EF] selection:text-white">
 
         {/* Background Decorative Grid */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-20"
-          style={{ backgroundImage: 'radial-gradient(#F97316 2px, transparent 2px)', backgroundSize: '40px 40px' }}>
-        </div>
+        {/* <div className="absolute inset-0 z-0 pointer-events-none opacity-20"
+          style={{ backgroundImage: 'radial-gradient(#f97316 2px, transparent 2px)', backgroundSize: '0px 0px' }}>
+        </div> */}
 
         {/* Content Container */}
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-20 items-center">
@@ -640,9 +641,9 @@ const LandingPageV2 = () => {
 
             <img
               loading="lazy"
-              src="https://placehold.co/1200x600/2DD4BF/0F172A?text=GRAND+SUMMIT+MAIN+VISUAL" // Replace with MAIN_IMAGE_URL
+              src={bgabout4} 
               alt="Grand Summit main visual"
-              className="w-full h-[400px] md:h-[600px] object-cover rounded-[1.8rem] border-4 border-slate-900 group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-[100px] md:h-[400px] object-cover rounded-[1.8rem] border-4 border-slate-900 group-hover:scale-105 transition-transform duration-700"
               onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/1200x600/FFCCBC/424242?text=Image+Not+Found'; }}
             />
           </motion.div>
@@ -666,7 +667,7 @@ const LandingPageV2 = () => {
                     <img
                       src={item.imageUrl}
                       alt={item.title}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                      className="w-full h-full object-cover transition-all duration-300"
                       onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/300x300/F97316/FFFFFF?text=PIC'; }}
                     />
                   </div>
