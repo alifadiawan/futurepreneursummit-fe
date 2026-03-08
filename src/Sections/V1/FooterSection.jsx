@@ -1,7 +1,7 @@
 // import { Link } from '@inertiajs/react'
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react'
 import React from 'react'
-import logofest from '../assets/Logo-FEST-LIGHT.png'
+import logofest from '../../assets/Logo-FEST-LIGHT.png'
 
 const FooterSection = () => {
   return (

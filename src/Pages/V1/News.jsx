@@ -1,5 +1,5 @@
 import React from 'react'
-import Guest from '../Layout/Guest'
+import Guest from '../../Layout/Guest'
 import bgImage from '../assets/bg-slider.png';
 import { motion } from 'framer-motion';
 import { Calendar, User } from 'lucide-react';

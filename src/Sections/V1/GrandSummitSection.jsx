@@ -1,13 +1,13 @@
 import React from 'react';
-import BG_IMAGE_URL from '../assets/5185208.jpg';
-import bgbg2 from '../assets/bg-purple.png'
-import MAIN_IMAGE_URL from '../assets/programs/grand-summit.png';
+import BG_IMAGE_URL from '../../assets/5185208.jpg';
+import bgbg2 from '../../assets/bg-purple.png'
+import MAIN_IMAGE_URL from '../../assets/programs/grand-summit.png';
 import { motion } from "framer-motion"
 
-import BAZAAR from '../assets/grand-seminar/BAZAAR.webp';
-import DOORPRIZE from '../assets/grand-seminar/DOORPRIZE.webp';
-import MUSIK from '../assets/grand-seminar/MUSIK.webp';
-import SEMINAR from '../assets/grand-seminar/SEMINAR.webp';
+import BAZAAR from '../../assets/grand-seminar/BAZAAR.webp';
+import DOORPRIZE from '../../assets/grand-seminar/DOORPRIZE.webp';
+import MUSIK from '../../assets/grand-seminar/MUSIK.webp';
+import SEMINAR from '../../assets/grand-seminar/SEMINAR.webp';
 
 
 // Helper component for individual grid items to keep the main component clean.

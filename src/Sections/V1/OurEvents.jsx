@@ -1,18 +1,18 @@
 import React from 'react'
-import CarouselCard from '../Components/CarouselCard'
-import BG_IMAGE_URL_3 from '../assets/bg_hiring.png';
+import CarouselCard from '../../Components/V1/CarouselCard'
+import BG_IMAGE_URL_3 from '../../assets/bg_hiring.png';
 import { div } from 'framer-motion/client';
 import { motion } from 'framer-motion';
 
-import bandung from '../assets/bandung.webp';
+import bandung from '../../assets/bandung.webp';
 
-import jember from '../assets/assets_banner/JEMBER.webp';
-import malang from '../assets/assets_banner/MALANG.webp';
-import purwokerto from '../assets/assets_banner/PURWOKERTO.webp';
-import semarang from '../assets/assets_banner/SEMARANG.webp';
-import solo from '../assets/assets_banner/SOLO.webp';
-import surabay from '../assets/assets_banner/SURABAY.webp';
-import yogyakarta from '../assets/assets_banner/YOGYAKARTA.webp';
+import jember from '../../assets/assets_banner/JEMBER.webp';
+import malang from '../../assets/assets_banner/MALANG.webp';
+import purwokerto from '../../assets/assets_banner/PURWOKERTO.webp';
+import semarang from '../../assets/assets_banner/SEMARANG.webp';
+import solo from '../../assets/assets_banner/SOLO.webp';
+import surabay from '../../assets/assets_banner/SURABAY.webp';
+import yogyakarta from '../../assets/assets_banner/YOGYAKARTA.webp';
 
 const OurEvents = () => {
 

@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 import { Calendar, Clock, ExternalLink, MapPin, Ticket, Users } from 'lucide-react';
 
 // Layout and asset imports (assuming these paths are correct in your project)
-import Guest from '../Layout/Guest'; // Assuming a wrapper/layout component
-import bgImage from '../assets/bg-slider.png'; // A nice abstract background
-import eventPoster from '../assets/bandung.webp'; // The main event poster
+import Guest from '../../Layout/Guest'; // Assuming a wrapper/layout component
+import bgImage from '../../assets/bg-slider.png'; // A nice abstract background
+import eventPoster from '../../assets/bandung.webp'; // The main event poster
 
 const EventDetail = () => {
     // Centralized event data for easy management

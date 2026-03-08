@@ -1,7 +1,7 @@
 import React from 'react'
-import Navbar from '../Components/Navbar';
+import Navbar from '../Components/V1/Navbar';
 import '../App.css';
-import FooterSection from '../Sections/FooterSection'
+import FooterSection from '../Sections/V1/FooterSection'
 
 const Guest = ({ children }) => {
     return (

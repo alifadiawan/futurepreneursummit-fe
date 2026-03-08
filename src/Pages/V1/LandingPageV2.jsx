@@ -3,14 +3,14 @@ import logo from '../assets/logo.png'
 import { motion } from 'framer-motion'
 import logo2 from '../assets/Logo-FEST-LIGHT.png';
 import bgImage from '../assets/bg-slider.png';
-import CarouselPopUp from '../Components/EmblaCarousel';
+import CarouselPopUp from '../../Components/V1/EmblaCarousel';
 
 import bgbg2 from '../assets/BG-ORANGE.png';
 import bgabout2 from '../assets/about-2.jpeg';
 import bgabout3 from '../assets/bg-about-3.webp';
 import bgabout4 from '../assets/YK-160.jpg';
 
-import CarouselCard from '../Components/CarouselCard'
+import CarouselCard from '../../Components/V1/CarouselCard'
 import BG_IMAGE_URL_3 from '../assets/bg_hiring.png';
 
 import jember from '../assets/assets_banner/JEMBER.webp';
@@ -20,7 +20,7 @@ import semarang from '../assets/assets_banner/SEMARANG.webp';
 import solo from '../assets/assets_banner/SOLO.webp';
 import surabay from '../assets/assets_banner/SURABAY.webp';
 import yogyakarta from '../assets/assets_banner/YOGYAKARTA.webp';
-import PixelTransition from '../Components/PixelTransition';
+import PixelTransition from '../../Components/V1/PixelTransition';
 import MAIN_IMAGE_URL from '../assets/programs/grand-summit.png';
 
 import grandsummit from '../assets/rangkaian_acara/1.webp';

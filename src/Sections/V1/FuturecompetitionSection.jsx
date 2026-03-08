@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import natinalcompetition from '../assets/programs/national_competition-3.png';
-import backgroundImage3 from '../assets/IMG_0389.PNG';
-import Modal from '../Components/Modal';
+import natinalcompetition from '../../assets/programs/national_competition-3.png';
+import backgroundImage3 from '../../assets/IMG_0389.PNG';
+import Modal from '../../Components/V1/Modal';
 
 import { motion } from 'framer-motion';
 
-import startupfounder from '../assets/programs/startup_founder.png';
-import visioncraft from '../assets/programs/vision_craft.png';
-import futureminds from '../assets/programs/futureminds.png';
-import twibbonchampion from '../assets/programs/twibbon_champion.png';
-import hadiah from '../assets/20jt.png';
+import startupfounder from '../../assets/programs/startup_founder.png';
+import visioncraft from '../../assets/programs/vision_craft.png';
+import futureminds from '../../assets/programs/futureminds.png';
+import twibbonchampion from '../../assets/programs/twibbon_champion.png';
+import hadiah from '../../assets/20jt.png';
 
 const CompetitionCard = ({ logo, title, description, link }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);

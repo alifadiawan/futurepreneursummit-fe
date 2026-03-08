@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import bg from '../assets/ip.png'
-import bghp from '../assets/FYX2026.png'
+import bg from '../../assets/ip.png'
+import bghp from '../../assets/FYX2026.png'
 
-import competition from '../assets/assets_banner/COMPETITION.webp';
-import hpKompetisi from '../assets/assets_banner/HP-KOMPETISI.webp';
-import hpWebinar from '../assets/assets_banner/HP-WEBINAR.webp';
-import webinar from '../assets/assets_banner/WEBINAR.webp';
+import competition from '../../assets/assets_banner/COMPETITION.webp';
+import hpKompetisi from '../../assets/assets_banner/HP-KOMPETISI.webp';
+import hpWebinar from '../../assets/assets_banner/HP-WEBINAR.webp';
+import webinar from '../../assets/assets_banner/WEBINAR.webp';
 
 
 const initialItems = [

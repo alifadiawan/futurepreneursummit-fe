@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
-import bgbg2 from '../assets/BG-ORANGE.png';
-import bgabout2 from '../assets/about-2.jpeg';
-import bgabout3 from '../assets/bg-about-3.webp';
-import bgabout4 from '../assets/YK-160.jpg';
+import bgbg2 from '../../assets/BG-ORANGE.png';
+import bgabout2 from '../../assets/about-2.jpeg';
+import bgabout3 from '../../assets/bg-about-3.webp';
+import bgabout4 from '../../assets/YK-160.jpg';
 
 const AboutUsSection = () => {
     const shouldReduceMotion = useReducedMotion();

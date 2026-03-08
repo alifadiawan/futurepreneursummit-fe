@@ -1,13 +1,13 @@
 import React from 'react'
 import { motion } from "framer-motion"
-import PixelTransition from '../Components/PixelTransition';
+import PixelTransition from '../../Components/V1/PixelTransition';
 
-import unair from '../assets/organizations/unair.webp';
-import its from '../assets/organizations/its.webp';
-import unesa from '../assets/organizations/unesa.webp';
-import upn from '../assets/organizations/upn.webp';
-import umm from '../assets/organizations/umm.webp';
-import uinsa from '../assets/organizations/uinsa.webp';
+import unair from '../../assets/organizations/unair.webp';
+import its from '../../assets/organizations/its.webp';
+import unesa from '../../assets/organizations/unesa.webp';
+import upn from '../../assets/organizations/upn.webp';
+import umm from '../../assets/organizations/umm.webp';
+import uinsa from '../../assets/organizations/uinsa.webp';
 
 
 const OrganizationsSection = () => {

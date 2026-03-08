@@ -1,22 +1,22 @@
 import React from 'react'
 import { motion } from "framer-motion"
-import PixelTransition from '../Components/PixelTransition';
+import PixelTransition from '../../Components/V1/PixelTransition';
 
-import golda from '../assets/sponsors/golda.png';
-import wardah from '../assets/sponsors/wardah.png';
-import pandalovely from '../assets/sponsors/pandalovely.png';
-import miesedap from '../assets/sponsors/miesedap.png';
-import kahf from '../assets/sponsors/kahf.png';
-import bening from '../assets/sponsors/bening.png';
-import yamaha from '../assets/sponsors/yamaha.png';
+import golda from '../../assets/sponsors/golda.png';
+import wardah from '../../assets/sponsors/wardah.png';
+import pandalovely from '../../assets/sponsors/pandalovely.png';
+import miesedap from '../../assets/sponsors/miesedap.png';
+import kahf from '../../assets/sponsors/kahf.png';
+import bening from '../../assets/sponsors/bening.png';
+import yamaha from '../../assets/sponsors/yamaha.png';
 
-import sponsor20 from '../assets/sponsors/20.png';
-import sponsor21 from '../assets/sponsors/21.png';
-import sponsor22 from '../assets/sponsors/22.png';
-import sponsor23 from '../assets/sponsors/23.png';
-import sponsor24 from '../assets/sponsors/24.png';
-import sponsor25 from '../assets/sponsors/25.png';
-import sponsor26 from '../assets/sponsors/26.png';
+import sponsor20 from '../../assets/sponsors/20.png';
+import sponsor21 from '../../assets/sponsors/21.png';
+import sponsor22 from '../../assets/sponsors/22.png';
+import sponsor23 from '../../assets/sponsors/23.png';
+import sponsor24 from '../../assets/sponsors/24.png';
+import sponsor25 from '../../assets/sponsors/25.png';
+import sponsor26 from '../../assets/sponsors/26.png';
 
 
 const SponsorsSection = () => {

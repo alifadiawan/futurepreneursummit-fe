@@ -5,11 +5,11 @@ import React from 'react';
 // import brand4 from '../assets/brands/brand4.png'
 // import brand5 from '../assets/brands/brand4.webp'
 
-import brand1 from '../assets/brands/LOGO-1.png'
-import brand2 from '../assets/brands/LOGO-2.png'
-import brand3 from '../assets/brands/LOGO-3.png'
-import brand4 from '../assets/brands/LOGO-4.png'
-import brand5 from '../assets/brands/LOGO-5.png'
+import brand1 from '../../assets/brands/LOGO-1.png'
+import brand2 from '../../assets/brands/LOGO-2.png'
+import brand3 from '../../assets/brands/LOGO-3.png'
+import brand4 from '../../assets/brands/LOGO-4.png'
+import brand5 from '../../assets/brands/LOGO-5.png'
 
 const logos = [
     { src: brand1, alt: "Brand 1" },

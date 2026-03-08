@@ -1,10 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-// import logo from '../../../../public/IP.png';
-import bgImage from '../assets/bg-slider.png';
-import CarouselPopUp from '../Components/EmblaCarousel';
+import logo from '../../assets/Logo-FEST-LIGHT.png';
+import bgImage from '../../assets/bg-slider.png';
 
-const HeroSection2 = () => {
+const ImageBackground = () => {
     return (
         <section
             className="hero-section relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
@@ -17,9 +16,9 @@ const HeroSection2 = () => {
                 initial={{ scale: 1.05, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="absolute inset-0 w-full h-full bg-cover bg-center z-0 bg-gradient-to-r from-gray-300 via-white to-gray-300"
+                className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
                 style={{
-                    // backgroundImage: `url(${backgroundImage3})`,
+                    backgroundImage: `url(${bgImage})`,
                     willChange: 'transform, opacity',
                 }}
             >
@@ -51,21 +50,28 @@ const HeroSection2 = () => {
                 }}
                 className="text-center p-8 rounded-lg relative z-10"
             >
-                {/* <motion.img
+                <motion.img
                     src={logo}
                     alt="FEST Light Logo"
-                    className="mx-auto lg:max-w-[96rem] rounded-4xl"
+                    className="mx-auto lg:max-w-2xl"
                     initial={{ scale: 0.8, filter: "blur(4px)" }}
-                    animate={{ scale: 1, filter: "blur(0px)" }}
-                    transition={{
-                        duration: 1.2,
-                        delay: 0.3,
-                        ease: "easeOut"
+                    animate={{
+                        scale: 1,
+                        filter: "blur(0px)",
+                        rotateY: [0, 2, -2, 0]
                     }}
-                    whileHover={{ rotateY: 10 }}
-                    style={{ willChange: "transform, filter" }}
-                /> */}
-                <CarouselPopUp />
+                    transition={{
+                        scale: { duration: 1.2, delay: 0.5 },
+                        filter: { duration: 1.2, delay: 0.5 },
+                        rotateY: {
+                            duration: 6,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            ease: "easeInOut",
+                            delay: 2
+                        }
+                    }}
+                />
             </motion.div>
 
             {/* CTA Button with enhanced hover and floating animation */}
@@ -90,6 +96,60 @@ const HeroSection2 = () => {
                         ease: "easeInOut",
                     }}
                 >
+                    <motion.a
+                        className="inline-block px-8 py-4 bg-gradient-to-r from-green-600 to-green-500 rounded-full text-white font-bold shadow-lg cursor-pointer relative overflow-hidden"
+                        whileHover={{
+                            scale: 1.08,
+                            boxShadow: "0 20px 40px rgba(34, 197, 94, 0.4)",
+                            background: "linear-gradient(135deg, #16a34a, #15803d)",
+                        }}
+                        whileTap={{
+                            scale: 0.96,
+                            transition: { duration: 0.1 }
+                        }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 300,
+                            damping: 20
+                        }}
+                    >
+                        {/* Animated shine effect */}
+                        <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
+                            initial={{ x: "-100%" }}
+                            animate={{ x: "200%" }}
+                            transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                repeatDelay: 3,
+                                ease: "easeInOut"
+                            }}
+                        />
+
+                        {/* Button text with subtle animation */}
+                        <motion.span
+                            initial={{ opacity: 0.8 }}
+                            animate={{ opacity: 1 }}
+                            className="relative z-10"
+                        >
+                            REGISTER NOW
+                        </motion.span>
+
+                        {/* Pulsing glow effect */}
+                        <motion.div
+                            className="absolute inset-0 rounded-full bg-green-400"
+                            animate={{
+                                scale: [1, 1.1, 1],
+                                opacity: [0, 0.3, 0],
+                            }}
+                            transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                repeatDelay: 1,
+                                ease: "easeOut"
+                            }}
+                        />
+                    </motion.a>
                 </motion.div>
             </motion.div>
 
@@ -122,4 +182,4 @@ const HeroSection2 = () => {
     )
 }
 
-export default HeroSection2
+export default ImageBackground

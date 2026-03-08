@@ -1,16 +1,16 @@
 import React from 'react'
-import bgplaceholder from '../assets/Logo-FEST-LIGHT.png'
+import bgplaceholder from '../../assets/Logo-FEST-LIGHT.png'
 
 import { motion } from "framer-motion"
 // import SpotlightCard from '../Components/SpotlightCard';
 // import { Link } from '@inertiajs/react';
-import PixelTransition from '../Components/PixelTransition';
+import PixelTransition from '../../Components/V1/PixelTransition';
 
-import grandsummit from '../assets/rangkaian_acara/1.webp';
-import nationalcompetition from '../assets/rangkaian_acara/2.webp';
-import webminar from '../assets/rangkaian_acara/3.webp';
-import bootcamp from '../assets/rangkaian_acara/4.webp';
-import internationalprogram from '../assets/rangkaian_acara/5.webp';
+import grandsummit from '../../assets/rangkaian_acara/1.webp';
+import nationalcompetition from '../../assets/rangkaian_acara/2.webp';
+import webminar from '../../assets/rangkaian_acara/3.webp';
+import bootcamp from '../../assets/rangkaian_acara/4.webp';
+import internationalprogram from '../../assets/rangkaian_acara/5.webp';
 
 
 const RangkaianAcaraSection = () => {
