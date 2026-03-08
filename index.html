@@ -1,13 +1,51 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Future Entrepreneur Summit | Build The Future Today</title>
+  <meta name="title" content="Future Entrepreneur Summit | Build The Future Today" />
+  <meta name="description"
+    content="Join thousands of student founders, innovators, and industry leaders at the Future Entrepreneur Summit Indonesia. Experience pitch battles, networking, and learn from the best." />
+  <meta name="keywords"
+    content="Future Entrepreneur Summit, FES, Startup Event Indonesia, Campus Entrepreneur, Pitch Battle, Tech Summit, Business Networking" />
+  <meta name="author" content="FESt Organizer" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href=/assets/logo.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+<script>
+  // Automatically grab the current calendar year
+  const currentYear = new Date().getFullYear();
+  const dynamicTitle = `Future Entrepreneur Summit ${currentYear} | Build The Future Today`;
+
+  // 1. Update the Browser Tab Title
+  document.title = dynamicTitle;
+
+  // 2. Update all SEO Meta Titles
+  const tagsToUpdate = [
+    { attr: 'name', value: 'title' },
+    { attr: 'property', value: 'og:title' },
+    { attr: 'property', value: 'twitter:title' }
+  ];
+
+  tagsToUpdate.forEach(tag => {
+    const element = document.querySelector(`meta[${tag.attr}="${tag.value}"]`);
+    if (element) {
+      element.setAttribute('content', dynamicTitle);
+    }
+  });
+</script>
+
 </html>
