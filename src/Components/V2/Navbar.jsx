@@ -11,9 +11,9 @@ const Navbar = () => {
             {/* Desktop Links */}
             <div className="hidden md:flex space-x-8 font-bold text-slate-800 text-lg uppercase tracking-wide">
                 <a href="#about" className="hover:text-[#F97316] transition-colors hover:-translate-y-1 transform duration-200">About</a>
-                <a href="#tracks" className="hover:text-[#F97316] transition-colors hover:-translate-y-1 transform duration-200">Tracks</a>
-                <a href="#speakers" className="hover:text-[#F97316] transition-colors hover:-translate-y-1 transform duration-200">Speakers</a>
                 <a href="#agenda" className="hover:text-[#F97316] transition-colors hover:-translate-y-1 transform duration-200">Agenda</a>
+                <a href="#ourevents" className="hover:text-[#F97316] transition-colors hover:-translate-y-1 transform duration-200">Events</a>
+                <a href="#speakers" className="hover:text-[#F97316] transition-colors hover:-translate-y-1 transform duration-200">Speakers</a>
             </div>
 
             {/* Pop CTA Button */}

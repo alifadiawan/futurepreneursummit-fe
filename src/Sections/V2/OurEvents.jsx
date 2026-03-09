@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 // Replace these with your actual import paths
@@ -11,8 +11,7 @@ import solo from '../../assets/assets_banner/SOLO.webp';
 import yogyakarta from '../../assets/assets_banner/YOGYAKARTA.webp';
 
 const OurEvents = () => {
-    // Re-added the color and shadow properties so the cards actually get their styling
-    const events = [
+    const fallbackEvents = [
         {
             id: 1,
             location: 'Surabaya',
@@ -93,6 +92,27 @@ const OurEvents = () => {
     ];
 
     const scrollContainerRef = useRef(null);
+    const [events, setEvents] = useState(fallbackEvents);
+
+    const fetchEvent = async () => {
+        try {
+            const res = await fetch('http://127.0.0.1:8000/events/all');
+            const json = await res.json();
+
+            if (json && json.length > 0) {
+                setEvents(json);
+            }
+
+        } catch (error) {
+            console.error("API failed, using fallback events", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchEvent();
+    }, []);
+
+    console.log(events)
 
     const scroll = (direction) => {
         const container = scrollContainerRef.current;
@@ -114,15 +134,18 @@ const OurEvents = () => {
             >
                 {/* Date Badge */}
                 <div className="absolute -top-4 -right-4 z-10 bg-[#F97316] text-white font-black uppercase text-xs px-4 py-2 border-4 border-slate-900 rotate-6 shadow-[4px_4px_0px_#0F172A]">
-                    {event.date}
+                    {new Date(event.event_date).toLocaleDateString('en-US', {
+                        month: 'long',
+                        year: 'numeric'
+                    })}
                 </div>
 
                 {/* Image Container */}
                 <div className={`w-full h-fit rounded-xl border-4 border-slate-900 overflow-hidden mb-6 ${event.color || 'bg-gray-200'} p-2 flex items-center justify-center`}>
                     <img
-                        src={event.imageUrl ?? "https://placehold.co/600x400/FFFFFF/0F172A?text=EVENT"}
+                        src={event.image_url ?? "https://placehold.co/600x400"}
                         alt={event.title}
-                        className="w-full h-full object-cover rounded-lg border-2 border-slate-900/10 grayscale group-hover:grayscale-0 transition-all duration-500"
+                        className="w-full h-full object-cover rounded-lg border-2 border-slate-900/10 transition-all duration-500"
                     />
                 </div>
 
@@ -131,7 +154,7 @@ const OurEvents = () => {
                     <div className="inline-block px-3 py-1 mb-3 rounded-md bg-gray-100 border-2 border-slate-900 font-bold text-xs uppercase tracking-widest text-slate-600 self-start">
                         📍 {event.location}
                     </div>
-                    <h3 className="text-3xl font-black text-slate-900 uppercase tracking-tight leading-none mb-4">
+                    <h3 className="text-3xl font-black text-slate-900 uppercase tracking-tight leading-tight mb-4 break-words">
                         {event.title}
                     </h3>
 
@@ -148,7 +171,7 @@ const OurEvents = () => {
 
     return (
         <section
-            id="events"
+            id="ourevents"
             className="py-24 relative overflow-hidden bg-[#2DD4BF] border-t-8 border-slate-900 font-sans selection:bg-[#FBBF24] selection:text-slate-900"
         >
             {/* Playful Plus-Sign Pattern Background */}
